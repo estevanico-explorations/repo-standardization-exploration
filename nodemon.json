@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "src",
+    "tests",
+    "data"
+  ],
+  "ext": "ts, data",
+  "exec": "ts-node ./src/index.ts -f data/scores.data -c 10"
+}

@@ -1,0 +1,31 @@
+---
+---
+
+# Playing around adding configs. Not really important right now but I'm
+# interested in looking into this.
+config:
+  limit: 100
+  # type: YAML
+  # sort: ASC
+  # file: string
+  # reader: any
+
+  # io:
+  #   logger: any
+  #   metrics: any
+  #   file: any
+
+  # FLAGS
+  exitOnError: false
+  output:
+    colour: true
+    header: true
+    errors: true
+    memory: true
+    scores: true
+    metadata: false
+
+  # shape: unknown
+  # dataSanitizer: any
+  # comparator: any
+  # sorter: any

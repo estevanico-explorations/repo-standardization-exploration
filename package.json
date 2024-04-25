@@ -1,0 +1,41 @@
+{
+  "name": "@mrpotatoes/repo-standardization",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "^18"
+  },
+  "scripts": {
+    "cln": "rm -rf data/*.data data/*.log .build",
+    "dev:live": "./node_modules/.bin/nodemon",
+    "dev:badfile": "ts-node ./src/index.ts -f data/highasdscores.data -c 10",
+    "gen-mocks:small": "bin/generate-mocks --size small",
+    "gen-mocks:medium": "bin/generate-mocks --size medium",
+    "gen-mocks:large": "bin/generate-mocks --size large",
+    "build": "./node_modules/.bin/tsc -p tsconfig.json",
+    "prod": "node .build/index.js",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.25",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@injectable-ts/core": "^1.0.0-beta.0",
+    "@mobily/ts-belt": "^3.13.1",
+    "commander": "^12.0.0",
+    "figlet": "^1.7.0",
+    "heap-js": "^2.5.0",
+    "nanoid": "^3.3.7",
+    "nanoid-dictionary": "^4.3.0",
+    "typescript": "^5.4.5"
+  }
+}

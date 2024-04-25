@@ -1,0 +1,81 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const { program } = require('commander')
+const { customAlphabet } = require('nanoid')
+const { alphanumeric, numbers } = require('nanoid-dictionary')
+
+/**
+ * Side effectual code.
+ */
+const options = program.option('-s, --size <size>', 'small, medium, large').parse().opts()
+const writeStream = fs.createWriteStream('data/scores.data')
+const sizeOpt = options.size ? options.size : 'small';
+const score = customAlphabet(numbers, 8)
+const id = customAlphabet(alphanumeric, 32)
+const name = customAlphabet(alphanumeric, 40)
+
+const sizes = {
+  small: 1000, // 1 thousand
+  medium: 500000, // 500 thousand
+  large: 5000000, // 5 million
+}
+
+// Utility Functions
+/**
+ *
+ * @see https://tech.libresinn.com/cheatsheets/random/generate-a-random-integer-in-given-range/
+ *
+ * @param min
+ * @param max
+ * @returns
+ */
+const randomInteger = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min
+
+/**
+ *
+ * @param x
+ * @param min
+ * @param max
+ * @returns
+ */
+const inRange = (x, min, max) => x >= min && x <= max
+
+/**
+ *
+ * @returns
+ */
+const jsonText = () => {
+  const randError = randomInteger(1, sizes[sizeOpt])
+  const between = inRange(randError, 50, sizes[sizeOpt] / 3)
+  const json = JSON.stringify({
+    umbrella: '99180',
+    score_name: name(),
+    value: '12354',
+    payload: '........',
+    date_stamp: 58874,
+    time: 615416,
+    id: id(),
+  })
+
+  return between ? 'JUNK DATA' : json
+}
+
+/**
+ *
+ */
+const writeFile = async () => {
+  for (let i = 0; i < sizes[sizeOpt]; i++) {
+    const written = writeStream.write(`${score()}: ${jsonText()}\n`)
+
+    if (!written) {
+      await new Promise(resolve => {
+        writeStream.once('drain', resolve)
+      })
+    }
+  }
+
+  writeStream.end()
+}
+
+writeFile()

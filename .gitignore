@@ -1,0 +1,9 @@
+# Automatically written Files
+.DS_Store
+
+## Directories
+data/*.txt
+data/*.log
+# data/*.data
+node_modules
+.build/*
