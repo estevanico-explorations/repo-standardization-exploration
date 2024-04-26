@@ -8,6 +8,10 @@
   - [Repo](#repo)
   - [Misc](#misc)
 
+# Wishlist
+
+[**`NOTE`**]: I plan to invest more time into the `Effect` ecosystem so I will move most of this code to a different repo or use `Effect` in this repo as I learn. 
+
 ## General
 - Add auto importing with the [`unplugin-auto-import`](https://unplugin.unjs.io/showcase/unplugin-auto-import.html) module
   - I'm interested in the `eslint` stuff too
